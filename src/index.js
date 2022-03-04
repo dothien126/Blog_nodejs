@@ -6,6 +6,8 @@ const { engine } = require("express-handlebars");
 const app = express();
 const port = 3000;
 
+const route = require("./routes")
+
 app.use(express.static(path.join(__dirname, "public")));
 // middlewear
 app.use(express.urlencoded({
@@ -25,21 +27,8 @@ app.engine("hbs", engine({
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resources/views"));
 
-app.get("/", (req, res) => {
-   res.render("home");
-});
+// Route init
+route(app);
 
-app.get("/search", (req, res) => {
-  console.log(req.body);
-  res.render("search");
-});
-
-app.post("/search", (req, res) => {
-  res.send("");
-});
-
-app.get("/news", (req, res) => {
-  res.render("news");
-});
 
 app.listen(port, () => console.log("He he he he"));
