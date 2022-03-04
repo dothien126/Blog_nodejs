@@ -1,16 +1,15 @@
-const res = require("express/lib/response");
+const res = require('express/lib/response');
 
 class SiteController {
-
     // [GET] /
     index(req, res) {
-        res.render("home");
-    };
+        res.render('home');
+    }
 
     // [GET] /search
     search(req, res) {
-        res.render("search");
-    };
+        res.render('search');
+    }
 }
 
-module.exports = new SiteController;
+module.exports = new SiteController();
