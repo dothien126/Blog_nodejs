@@ -7,8 +7,13 @@ const app = express();
 const port = 3000;
 
 const route = require('./routes');
+const db = require('./config/db');
+
+// connect to db
+db.connect();
 
 app.use(express.static(path.join(__dirname, 'public')));
+
 // middlewear
 app.use(
     express.urlencoded({
@@ -30,9 +35,9 @@ app.engine(
     }),
 );
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'resources/views'));
+app.set('views', path.join(__dirname, 'resources','views'));
 
 // Route init
 route(app);
 
-app.listen(port, () => console.log('He he he he'));
+// app.listen(port, () => console.log('He he he he'));
